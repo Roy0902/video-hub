@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
   --background: #ffffff;
@@ -14,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #002B5B;
+    --background:  #040720;
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
     --primary-color: ##111184;
@@ -59,4 +60,8 @@ body {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.Logo {
+  background-image: url(../public/logo.jpg);
 }

@@ -1,13 +1,8 @@
-import type { Route } from "./+types/home";
-import SideBar from '@/components/SideBar/SideBar'
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import SideBar from '@/components/Navigation/SideBar'
+import { Outlet } from "react-router";
 
 export default function Home() {
-  return <SideBar />;
+  return <div className="container">
+            
+         </div>;
 }

@@ -10,6 +10,10 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import SideBar from "@/components/Navigation/SideBar";
+import StoreProvider from "@/store/StoreProvider";
+import NavigationBar from "@/components/Navigation/NavigationBar";
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -28,14 +32,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <title>StreamPulse Notes</title>
+          <link rel="icon" type="image/x-icon" href="./public/logo.png"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <div className="flex-row w-full h-full"> 
+          <NavigationBar/>
+          <div className="container h-full justify-between items-center">
+            {children}
+          </div>
+          <ScrollRestoration />
+          <Scripts />
+        </div>
       </body>
     </html>
   );

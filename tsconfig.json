@@ -20,6 +20,8 @@
       "@/components/*": ["./components/*"],
       "@/constants/*": ["./constants/*"],
       "@/types/*": ["./types/*"],
+      "@/library/*": ["./app/routes/library/*"],
+      "@/public/*": ["./public/*"],
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
