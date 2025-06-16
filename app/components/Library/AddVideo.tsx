@@ -1,15 +1,30 @@
-import { useAppDispatch } from "@/store/hook";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { setAddVideo } from "@/store/librarySlice";
+import store from "@/store/store"
 
 import isValidURL from "@/validation/urlValidator"
-import { useState } from "react";
+import type { Dispatch } from "@reduxjs/toolkit";
 
 import { RxVideo } from "react-icons/rx";
+import { MESSAGE_EMPTY_URL } from "~/constants/constants";
+
+var url:string;
+function addVideo(dispatch: typeof store.dispatch):void{
+    if(url.length === 0){
+        dispatch.setErrorMessage(MESSAGE_EMPTY_URL);
+        return;
+    }
+
+    if(isValidURL(url)){
+        dispatch.set
+    }
+}
 
 const AddVideo: React.FC =() =>{
+
     const dispatch = useAppDispatch();
-    const [validURL, setValidURL] = useState(true);
-    const [errorMessage, setErrorMessage] = useState();
+    const validURL = useAppSelector(state=>state.addVideo.validURL);
+    const errorMessage = useAppSelector(state=>state.addVideo.errorMessage)
 
     return(
         <div className="flex flex-col justify-start">
@@ -25,7 +40,7 @@ const AddVideo: React.FC =() =>{
                     <input
                             placeholder="https://www.youtube.com/"
                             type="url"
-                            value={inputURL.url}
+                            value={url}
                             className="flex h-10 w-full my-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         />
                     <p className={`my-1 ml-1 text-lg text-red-600 ${!validURL?'visible':'invisible'}`}>{errorMessage}</p>
@@ -37,7 +52,7 @@ const AddVideo: React.FC =() =>{
                         </button>
                         <button type="button" 
                                 className="w-30 mx-4 py-3 px-4 flex-none text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm text-center"
-                                onClick={()=> addVideo()}>
+                                onClick={()=> addVideo(url)}>
                                 <p>Add</p> 
                         </button>
                     </div>

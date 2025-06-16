@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import sideBarReducer from './sideBarSlice'
 import libraryReducer from './librarySlice'
+import addVideoReducer from './addVideoSlice'
 
 const store = configureStore({
   reducer: {
       sideBar:sideBarReducer,
       library:libraryReducer,
+      addVideo:addVideoReducer
   },
 })
 

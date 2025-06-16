@@ -15,3 +15,5 @@ export const sideBarItems: SideBarItem[] = [
     title: 'History', 
     route: '/history' }, 
 ]
+
+export const MESSAGE_EMPTY_URL:string="Please enter the YouTube URL"
