@@ -1,4 +1,4 @@
-import type { SideBarItem } from "@/types/SideBarItem";
+import type { SideBarItem } from "app/types/SideBarItem";
 import { MdVideoLibrary } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import { FaHistory } from "react-icons/fa";

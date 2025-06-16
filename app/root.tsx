@@ -10,7 +10,6 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
-import SideBar from "@/components/Navigation/SideBar";
 import StoreProvider from "@/store/StoreProvider";
 import NavigationBar from "@/components/Navigation/NavigationBar";
 
@@ -38,11 +37,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        <div className="flex-row w-full h-full"> 
+      <body className="max-w-full max-h-full">
+        <div className="flex-row"> 
           <NavigationBar/>
-          <div className="container h-full justify-between items-center">
-            {children}
+          <div className="w-full h-full justify-between items-center">
+            <StoreProvider>
+              {children}
+            </StoreProvider>
           </div>
           <ScrollRestoration />
           <Scripts />
