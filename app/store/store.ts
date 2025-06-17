@@ -1,16 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import sideBarReducer from './sideBarSlice'
+import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit'
 import libraryReducer from './librarySlice'
 import addVideoReducer from './addVideoSlice'
+import cookieSlice from './cookieSlice'
 
 const store = configureStore({
   reducer: {
-      sideBar:sideBarReducer,
       library:libraryReducer,
-      addVideo:addVideoReducer
+      addVideo:addVideoReducer,
+      cookie: cookieSlice,
   },
 })
 
 export default store;
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+export type AppThunk = ThunkAction<void, RootState, unknown, Action>

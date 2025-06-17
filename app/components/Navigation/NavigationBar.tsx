@@ -1,6 +1,7 @@
 import StoreProvider from "@/store/StoreProvider";
 import SideBar from "./SideBar";
 import logo from '@/public/logo.png';
+import { NavLink } from "react-router";
 
 const NavigationBar: React.FC = () =>{
     return (
@@ -10,7 +11,9 @@ const NavigationBar: React.FC = () =>{
                     <SideBar/>
                 </nav>
                 <div className="flex flex-row items-center ml-20">
-                    <img src={logo} alt="logo" className="h-24 w-48" />
+                    <NavLink to="/">
+                        <img src={logo} alt="logo" className="h-24 w-48" />
+                    </NavLink>
                     <p className="font-bold text-2xl font-bebas ">StreamPulse Notes</p>
                 </div>
                 <div></div>

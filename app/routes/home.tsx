@@ -1,8 +1,30 @@
 import SideBar from '@/components/Navigation/SideBar'
-import { Outlet } from "react-router";
+import { useAppDispatch, useAppSelector } from '@/store/hook';
+import EmptyLibrary from '@/components/Library/EmptyLibrary';
+import { setSessionId } from '~/store/cookieSlice';
+import { Navigate } from 'react-router-dom';
+
+function getSessionIdFromCookie():string | null {
+  const cookieSplit = document.cookie.split('; ').find((row) => row.startsWith('session-id='));
+  if(cookieSplit === undefined){
+     return null;
+  }
+
+  return cookieSplit.split('=')[1];
+}
 
 export default function Home() {
-  return <div className="container">
-            
-         </div>
+  const dispatch = useAppDispatch();
+  dispatch(setSessionId(getSessionIdFromCookie()));
+  
+  const empty = useAppSelector((state) =>  state.library.empty);
+  const sessionId = useAppSelector((state) => state.cookie.sessionId);
+
+  if(sessionId === null){
+    return<Navigate to="/library" />
+  }
+  
+  return (<div className="w-full h-full flex flex-col flex-1 items-center">
+               {empty?<EmptyLibrary/>:""}
+          </div>)
 }
