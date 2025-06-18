@@ -60,7 +60,3 @@ body {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
-
-.Logo {
-  background-image: url(../public/logo.jpg);
-}

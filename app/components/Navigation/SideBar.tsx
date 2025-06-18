@@ -8,6 +8,7 @@ import { NavLink } from "react-router";
 import { useRef, useState } from "react";
 
 const SideBar: React.FC = () => {
+    
     const [open, setOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -15,7 +16,7 @@ const SideBar: React.FC = () => {
     };
 
     return(
-        <div>
+        <div className="me-20">
             <div 
                 className={`fixed inset-0 bg-black/30 z-10 ${open ? 'visible' : 'hidden'}`}  
                 onClick={toggleSidebar}

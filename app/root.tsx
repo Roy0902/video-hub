@@ -38,16 +38,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="max-w-full max-h-full">
-        <div className="flex-row"> 
-          <NavigationBar/>
-          <div className="w-full h-full justify-between items-center">
-            <StoreProvider>
-              {children}
-            </StoreProvider>
+        <StoreProvider>
+          <div className="flex-row"> 
+
+            <NavigationBar/>
+            <div className="w-full h-full justify-between items-center">
+                {children}
+            </div>
+            <ScrollRestoration />
+            <Scripts />
           </div>
-          <ScrollRestoration />
-          <Scripts />
-        </div>
+        </StoreProvider>
       </body>
     </html>
   );

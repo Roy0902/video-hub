@@ -4,7 +4,7 @@ import EmptyLibrary from '@/components/Library/EmptyLibrary';
 import { setSessionId } from '~/store/cookieSlice';
 import { Navigate } from 'react-router-dom';
 
-function getSessionIdFromCookie():string | null {
+function getSessionTokenFromCookie():string | null {
   const cookieSplit = document.cookie.split('; ').find((row) => row.startsWith('session-id='));
   if(cookieSplit === undefined){
      return null;
@@ -15,13 +15,13 @@ function getSessionIdFromCookie():string | null {
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  dispatch(setSessionId(getSessionIdFromCookie()));
+  dispatch(setSessionId(getSessionTokenFromCookie()));
   
   const empty = useAppSelector((state) =>  state.library.empty);
-  const sessionId = useAppSelector((state) => state.cookie.sessionId);
+  const sessionToken = useAppSelector((state) => state.cookie.sessionId);
 
-  if(sessionId === null){
-    return<Navigate to="/library" />
+  if(sessionToken === null){
+    return<Navigate to="/login" />
   }
   
   return (<div className="w-full h-full flex flex-col flex-1 items-center">
