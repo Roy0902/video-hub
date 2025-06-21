@@ -22,6 +22,8 @@
       "@/types/*": ["./app/types/*"],
       "@/public/*": ["./app/public/*"],
       "@/validation/*": ["./app/validation/*"],
+      "@/services/*": ["./app/services/*"],
+      "@/hooks/*": ["./app/hooks/*"],
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
